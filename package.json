@@ -4,6 +4,7 @@
   "scripts": {
     "setup-venv": "python3 -m pip install virtualenv && python3 -m venv ./venv",
     "install-requirements": "python3 -m pip install -r requirements.txt",
-    "get-started": "yarn setup-venv && yarn install-requirements"
+    "get-started": "yarn setup-venv && yarn install-requirements",
+    "flask:run": "python3 application.py"
   }
 }
