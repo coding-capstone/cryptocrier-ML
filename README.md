@@ -4,8 +4,10 @@
 1. Run `yarn install`
 1. Run the `yarn setup-venv` script
 1. Activate your virtual environment
+    1. Mac (Using VSCode and enabled Python extension): `code .`
     1. Mac: `source ./venv/bin/activate`
     1. Windows: `.\venv\Scripts\activate.bat`
+    You should see a (venv) to the left of your terminal prompt
 1. Run the `yarn install-requirements` script
 1. Export flask development environment variable
     1. Mac: `export FLASK_ENV=development`
