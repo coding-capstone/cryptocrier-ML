@@ -7,7 +7,7 @@ from model.get_history import get_history
 application = Flask(__name__)
 
 
-@application.route('/')
+@application.route("/")
 def home():
     return """
     <h1> crypto-crier ML API is functional.</h1>
@@ -19,20 +19,20 @@ def home():
     """
 
 
-@application.route('/history', methods=['GET', 'POST'])
+@application.route("/history", methods=["GET", "POST"])
 def history():
     history_request = request.json
     result = get_history(history_request)
     return jsonify(result)
 
 
-@application.route('/prediction', methods=['GET', 'POST'])
+@application.route("/prediction", methods=["GET", "POST"])
 def prediction():
     t1_start = time.process_time()
-    print('remote address: ', str(request.remote_addr))
+    print("remote address: ", str(request.remote_addr))
 
     prediction_request = request.json
-    result = 'You sent the following prediction request: ' + str(prediction_request)
+    result = "You sent the following prediction request: " + str(prediction_request)
 
     t1_stop = time.process_time()
     elapsed_time = t1_stop - t1_start
