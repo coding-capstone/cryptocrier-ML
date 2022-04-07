@@ -5,6 +5,7 @@ click==8.0.4
 distlib==0.3.4
 filelock==3.6.0
 Flask==2.0.3
+Flask-Cors==3.0.10
 idna==3.3
 itsdangerous==2.1.1
 Jinja2==3.0.3
