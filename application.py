@@ -1,10 +1,12 @@
 import time
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 from model.get_history import get_history
 
 application = Flask(__name__)
+cors = CORS(application, resources={r"/*": {"origins": "*"}})
 
 
 @application.route("/")
@@ -21,9 +23,10 @@ def home():
 
 @application.route("/history", methods=["GET", "POST"])
 def history():
-    history_request = request.json
-    result = get_history(history_request)
-    return jsonify(result)
+    result = get_history(request.json)
+    res = jsonify(result)
+    res.headers.add("Access-Control-Allow-Origin", "*")
+    return res
 
 
 @application.route("/prediction", methods=["GET", "POST"])
@@ -32,13 +35,15 @@ def prediction():
     print("remote address: ", str(request.remote_addr))
 
     prediction_request = request.json
-    result = "You sent the following prediction request: " + str(prediction_request)
+    result = "You sent the following prediction request: " + \
+        str(prediction_request)
 
     t1_stop = time.process_time()
     elapsed_time = t1_stop - t1_start
     print("Elapsed time:", elapsed_time)
-
-    return jsonify("{}".format(result))
+    res = jsonify(result)
+    res.headers.add("Access-Control-Allow-Origin", "*")
+    return res
 
 
 if __name__ == "__main__":
